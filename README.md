@@ -13,10 +13,10 @@
 
 **🎯 核心优势：**
 
-- ✅ 全局安装用户：直接替换预编译 UI，无需安装依赖
-- ✅ 源码安装用户：打补丁后构建
-- ✅ 保留官方所有功能
-- ✅ 支持中英文一键切换
+- ✅ **中英文实时切换**：右上角一键切换，刷新即刻生效
+- ✅ **全局安装用户**：直接替换预编译 UI，无需安装依赖
+- ✅ **源码安装用户**：直接打补丁构建，安装简单
+- ✅ **保留官方所有功能**：不影响 Gateway 和其他功能
 
 ---
 
@@ -131,17 +131,14 @@ A: 这是正常行为。静态文件替换在 Gateway 重启后需要重新操�
 
 **全局安装用户：**
 
-重新运行一次官方 OpenClaw 的安装即可恢复：
 ```bash
-npm install -g openclaw
+npm install -g openclaw@latest
 ```
 
-或手动删除中文 UI 文件：
+**源码安装用户：**
 
-```powershell
-# Windows
-Remove-Item "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
-npm install -g openclaw
+```bash
+openclaw update
 ```
 
 ### Q: 支持哪些系统？
