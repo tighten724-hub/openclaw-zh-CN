@@ -9,7 +9,7 @@
 
 ## 📖 项目介绍
 
-本项目为 OpenClaw 多渠道 AI 网关控制台 提供全量、精准的中文界面翻译，支持中英文界面实时切换，适配官方 OpenClaw 源码直接安装，安装流程极简且对中国用户高度友好，覆盖控制台所有功能模块与操作流程，让中文用户无需依赖英文界面，轻松使用 OpenClaw 多渠道 AI 网关能力。
+本项目为 **OpenClaw** 多渠道 AI 网关控制台提供完整的中文界面翻译。
 
 **🎯 核心优势：**
 
@@ -27,12 +27,145 @@
 | ![中文界面](docs/images/zw_1.png) | ![英文界面](docs/images/yw_3.png) |
 | ![配置页面](docs/images/zw_2.png) | |
 
-### v2026.2.17 (2026-02-18)
+### v2026.2.17 (2026-02-19)
 
 - ✅ 适配 OpenClaw 2026.2.17
-- ✅ 新增预编译 UI，支持全局安装用户直接替换
-- ✅ 新增一键安装脚本
-- ✅ 新增中文演示截图
+- ✅ 完整中文界面翻译
+- ✅ 支持中英文一键切换
+- ✅ 保留官方所有功能
+
+---
+
+## 📦 安装指南
+
+### 方式一：全局安装用户（推荐）
+
+适用于通过 `npm install -g openclaw` 安装的用户。
+
+#### Windows
+
+```powershell
+# 1. 下载本项目压缩包并解压
+
+# 2. 以管理员身份运行 PowerShell
+# 进入解压目录
+cd 路径\to\openclaw-zh-CN-release
+
+# 3. 复制文件到全局安装目录
+Copy-Item "dist\control-ui\*" "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui\" -Recurse -Force
+
+# 4. 刷新浏览器访问 http://localhost:18789
+# 点击右上角 "中 / EN" 切换语言
+```
+
+#### Linux / macOS
+
+```bash
+# 1. 下载本项目压缩包并解压
+
+# 2. 进入解压目录
+cd 路径/to/openclaw-zh-CN-release
+
+# 3. 复制文件到全局安装目录
+sudo cp -r dist/control-ui/* /usr/lib/node_modules/openclaw/dist/control-ui/
+
+# 4. 刷新浏览器访问 http://localhost:18789
+# 点击右上角 "中 / EN" 切换语言
+```
+
+---
+
+### 方式二：源码安装用户
+
+适用于从 GitHub 克隆源码并自行构建的用户。
+
+```bash
+# 1. 克隆本项目
+git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
+
+# 2. 进入 OpenClaw 源码目录
+cd path/to/openclaw
+
+# 3. 删除原有的 UI 目录
+rm -rf dist/control-ui
+
+# 4. 从本项目复制 UI 文件
+cp -r 路径/to/openclaw-zh-CN/dist/control-ui dist/
+
+# 5. 重启 Gateway
+openclaw gateway restart
+
+# 6. 刷新浏览器访问 http://localhost:18789
+```
+
+---
+
+## 🔧 常见问题
+
+### Q: 安装后界面没有变化？
+
+A: 请尝试以下步骤：
+1. 清除浏览器缓存 (Ctrl+Shift+Del)
+2. 强制刷新页面 (Ctrl+F5)
+3. 如果仍不生效，尝试重启 Gateway:
+   ```bash
+   openclaw gateway restart
+   ```
+
+### Q: Gateway 重启后中文界面消失了？
+
+A: 这是正常行为。静态文件替换在 Gateway 重启后需要重新操作。
+
+如需永久生效，可将安装命令加入系统启动项或创建快捷方式。
+
+### Q: 如何卸载？
+
+**全局安装用户：**
+
+重新运行一次官方 OpenClaw 的安装即可恢复：
+```bash
+npm install -g openclaw
+```
+
+或手动删除中文 UI 文件，让 Gateway 自动恢复（如果官方文件还在）：
+
+```powershell
+# Windows
+Remove-Item "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
+# 然后重新安装 openclaw
+npm install -g openclaw
+```
+
+### Q: 支持哪些系统？
+
+| 系统 | 全局安装 | 源码安装 |
+|------|---------|---------|
+| Windows 10/11 | ✅ | ✅ |
+| Linux (Ubuntu/Debian等) | ✅ | ✅ |
+| macOS | ✅ | ✅ |
+
+### Q: 支持哪些 OpenClaw 版本？
+
+本版本适配 **OpenClaw 2026.2.17**。
+
+如需其他版本，请参考源码自行构建。
+
+---
+
+## 📁 目录结构
+
+```
+openclaw-zh-CN/
+├── README.md              # 本文件
+├── LICENSE               # MIT 许可证
+├── dist/                 # 预编译的 UI 文件
+│   └── control-ui/
+│       ├── index.html
+│       ├── favicon.ico
+│       └── assets/
+└── docs/
+    └── images/           # 截图演示
+```
 
 ---
 
