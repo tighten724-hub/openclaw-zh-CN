@@ -54,26 +54,32 @@ cd openclaw-zh-CN
 #### Windows (PowerShell)
 
 ```powershell
-# 进入项目目录
-cd 路径\to\openclaw-zh-CN\dist\control-ui
+# 1. 克隆项目到本地
+git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
 
-# 复制文件到全局安装目录
+# 2. 进入项目的 control-ui 目录
+cd openclaw-zh-CN\dist\control-ui
+
+# 3. 复制文件到全局安装目录
 Copy-Item . "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
 
-# 刷新浏览器访问 http://localhost:18789
+# 4. 刷新浏览器访问 http://localhost:18789
 # 点击右上角 "中 / EN" 切换语言
 ```
 
 #### Linux / macOS
 
 ```bash
-# 进入项目目录
-cd 路径/to/openclaw-zh-CN/dist/control-ui
+# 1. 克隆项目到本地
+git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
 
-# 复制文件到全局安装目录
+# 2. 进入项目的 control-ui 目录
+cd openclaw-zh-CN/dist/control-ui
+
+# 3. 复制文件到全局安装目录
 sudo cp -r . /usr/lib/node_modules/openclaw/dist/control-ui/
 
-# 刷新浏览器访问 http://localhost:18789
+# 4. 刷新浏览器访问 http://localhost:18789
 # 点击右上角 "中 / EN" 切换语言
 ```
 
