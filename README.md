@@ -38,38 +38,42 @@
 
 ## 📦 安装指南
 
+### 克隆项目
+
+```bash
+git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
+cd openclaw-zh-CN
+```
+
+---
+
 ### 方式一：全局安装用户（推荐）
 
 适用于通过 `npm install -g openclaw` 安装的用户。
 
-#### Windows
+#### Windows (PowerShell)
 
 ```powershell
-# 1. 下载本项目压缩包并解压
+# 进入项目目录
+cd 路径\to\openclaw-zh-CN\dist\control-ui
 
-# 2. 以管理员身份运行 PowerShell
-# 进入解压目录
-cd 路径\to\openclaw-zh-CN-release
+# 复制文件到全局安装目录
+Copy-Item . "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
 
-# 3. 复制文件到全局安装目录
-Copy-Item "dist\control-ui\*" "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui\" -Recurse -Force
-
-# 4. 刷新浏览器访问 http://localhost:18789
+# 刷新浏览器访问 http://localhost:18789
 # 点击右上角 "中 / EN" 切换语言
 ```
 
 #### Linux / macOS
 
 ```bash
-# 1. 下载本项目压缩包并解压
+# 进入项目目录
+cd 路径/to/openclaw-zh-CN/dist/control-ui
 
-# 2. 进入解压目录
-cd 路径/to/openclaw-zh-CN-release
+# 复制文件到全局安装目录
+sudo cp -r . /usr/lib/node_modules/openclaw/dist/control-ui/
 
-# 3. 复制文件到全局安装目录
-sudo cp -r dist/control-ui/* /usr/lib/node_modules/openclaw/dist/control-ui/
-
-# 4. 刷新浏览器访问 http://localhost:18789
+# 刷新浏览器访问 http://localhost:18789
 # 点击右上角 "中 / EN" 切换语言
 ```
 
@@ -77,25 +81,24 @@ sudo cp -r dist/control-ui/* /usr/lib/node_modules/openclaw/dist/control-ui/
 
 ### 方式二：源码安装用户
 
-适用于从 GitHub 克隆源码并自行构建的用户。
+适用于从 GitHub 克隆 OpenClaw 源码并自行构建的用户。
 
 ```bash
-# 1. 克隆本项目
+# 1. 克隆 OpenClaw 源码
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+# 2. 克隆本项目获取中文 UI
 git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
 
-# 2. 进入 OpenClaw 源码目录
-cd path/to/openclaw
-
-# 3. 删除原有的 UI 目录
+# 3. 替换 UI 文件
 rm -rf dist/control-ui
+cp -r openclaw-zh-CN/dist/control-ui dist/
 
-# 4. 从本项目复制 UI 文件
-cp -r 路径/to/openclaw-zh-CN/dist/control-ui dist/
-
-# 5. 重启 Gateway
+# 4. 重启 Gateway
 openclaw gateway restart
 
-# 6. 刷新浏览器访问 http://localhost:18789
+# 5. 刷新浏览器访问 http://localhost:18789
 ```
 
 ---
@@ -127,12 +130,11 @@ A: 这是正常行为。静态文件替换在 Gateway 重启后需要重新操�
 npm install -g openclaw
 ```
 
-或手动删除中文 UI 文件，让 Gateway 自动恢复（如果官方文件还在）：
+或手动删除中文 UI 文件：
 
 ```powershell
 # Windows
 Remove-Item "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
-# 然后重新安装 openclaw
 npm install -g openclaw
 ```
 
