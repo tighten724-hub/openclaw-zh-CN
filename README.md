@@ -60,8 +60,8 @@ git clone https://github.com/tighten724-hub/openclaw-zh-CN.git
 # 2. 进入项目的 control-ui 目录
 cd openclaw-zh-CN\dist\control-ui
 
-# 3. 复制文件到全局安装目录
-Copy-Item . "$env:APPDATA\npm\node_modules\openclaw\dist\control-ui" -Recurse -Force
+# 3. 复制文件到全局安装目录 (使用 xcopy)
+xcopy * "C:\Users\Administrator\AppData\Roaming\npm\node_modules\openclaw\dist\control-ui\" /E /Y
 
 # 4. 刷新浏览器访问 http://localhost:18789
 # 点击右上角 "中 / EN" 切换语言
